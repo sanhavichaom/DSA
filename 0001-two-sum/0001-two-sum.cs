@@ -3,7 +3,7 @@ public class Solution {
         var map = new Dictionary<int,int>();
         for( int i = 0; i < nums.Length; i++){
             int x = nums[i];
-            int need = target - nums[i];
+            int need = target - x;
 
             if(map.ContainsKey(need)){
                 return new int[] {map[need], i};
