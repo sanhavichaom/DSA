@@ -1,20 +1,52 @@
 public class Solution {
     public bool IsAnagram(string s, string t) {
-        char[] str1 = s.ToCharArray();
-        char[] str2 = t.ToCharArray();
+        var map1 = new Dictionary<char, int>();
+        var map2 = new Dictionary<char, int>();
 
-        if(str1.Length != str2.Length){
+        if(s.Length != t.Length){
             return false;
         }
         
-        Array.Sort(str1);
-        Array.Sort(str2);
+        for (int i = 0; i < s.Length; i++)
+        {
+            char c = s[i]; 
 
-        for(int i = 0; i < str1.Length; i++){
-            if(str1[i] != str2[i]){
-                return false;
-            }
+   
+            if (!map1.ContainsKey(c))
+                map1[c] = 0;
+
+
+            map1[c]++;
         }
+
+        for (int i = 0; i < t.Length; i++)
+        {
+            char c = t[i];
+
+            if (!map2.ContainsKey(c))
+                map2[c] = 0;
+
+            map2[c]++;
+        }
+
+        if (map1.Count != map2.Count)
+            return false;
+
+        foreach (var pair in map1)
+        {
+            char key = pair.Key;     
+            int value = pair.Value;  
+
+
+            if (!map2.ContainsKey(key))
+                return false;
+
+
+            if (map2[key] != value)
+                return false;
+        }
+
         return true;
+
     }
 }
