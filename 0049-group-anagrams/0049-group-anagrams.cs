@@ -2,12 +2,12 @@ public class Solution {
     public IList<IList<string>> GroupAnagrams(string[] strs) {
         Dictionary<string, List<string>> map = new Dictionary<string, List<string>>();
 
-        foreach(string word in strs){   //คำทั้งหมด ใน Array ->> 'tan'
-            char[] chars = word.ToCharArray(); // แปลงเป็น char และเก็บใน chars[] ->> 't','a','n'
+        foreach(string word in strs){
+            char[] chars = word.ToCharArray();
 
-            Array.Sort(chars); // เรียงตัวอักษร ยกตัวอย่าง tan ->> 'a','n','t'
+            Array.Sort(chars);
 
-            string key = new string(chars); // แปลงคำกลับเป็น string key 'ant'
+            string key = new string(chars);
 
             if(!map.ContainsKey(key)){
                 map[key] = new List<string>();
